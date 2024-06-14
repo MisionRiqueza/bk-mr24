@@ -3,7 +3,7 @@ const express = require('express');
 const session = require('express-session');
 const connectDB = require('./config/mongodb');
 const passport = require('passport');
-const firebaseAdmin = require('./config/firebase');
+const cors = require('cors');
 const MongoStore = require('connect-mongo');
 const app = express();
 
@@ -22,6 +22,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(cors())
 // Conectar a la base de datos
 connectDB();
 
